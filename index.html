@@ -4,59 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOP — House of Pace</title>
+  <meta name="description" content="HOP é a comunidade de consistência de São Paulo. Mindset, performance e comunidade para quem não para." />
+  <meta property="og:title" content="HOP — House of Pace" />
+  <meta property="og:description" content="Consistência é o que te separa do próximo nível. Faça parte da HOP." />
+  <meta property="og:image" content="assets/09-Billboards-HOP-Final/Hop-Galpão-Final.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/01-mainlogo-HOP-Negative-FinalHOP.png" />
+
   <style>
     @font-face {
       font-family: 'Blauer Nue';
       src: url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Regular.woff2') format('woff2'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Regular.woff') format('woff'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Regular.ttf') format('truetype');
-      font-weight: 400;
-      font-style: normal;
+      font-weight: 400; font-style: normal;
     }
-
     @font-face {
       font-family: 'Blauer Nue';
       src: url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Bold.woff2') format('woff2'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Bold.woff') format('woff'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Bold.ttf') format('truetype');
-      font-weight: 700;
-      font-style: normal;
+      font-weight: 700; font-style: normal;
     }
-
     @font-face {
       font-family: 'Blauer Nue';
       src: url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-ExtraBold.woff2') format('woff2'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-ExtraBold.woff') format('woff'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-ExtraBold.ttf') format('truetype');
-      font-weight: 800;
-      font-style: normal;
+      font-weight: 800; font-style: normal;
     }
-
     @font-face {
       font-family: 'Blauer Nue';
       src: url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Heavy.woff2') format('woff2'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Heavy.woff') format('woff'),
            url('assets/04-Fonts-HOP-Final/01-Fonts-HOP-Final/BlauerNue-Heavy.ttf') format('truetype');
-      font-weight: 900;
-      font-style: normal;
+      font-weight: 900; font-style: normal;
     }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --orange-i:   #C81000;
-      --orange-ii:  #E85002;
-      --black:      #0A0A0A;
-      --cloud:      #F0EEEA;
-      --red:        #7F1E0E;
-      --white:      #F9F9F9;
-      --gray:       #646464;
-      --dark-gray:  #333333;
+      --orange:    #E85002;
+      --orange-d:  #C81000;
+      --black:     #0A0A0A;
+      --cloud:     #F0EEEA;
+      --white:     #F9F9F9;
+      --gray:      #646464;
+      --dark-gray: #1A1A1A;
+      --mid-gray:  #333333;
       --font: 'Blauer Nue', 'Arial Black', sans-serif;
+      --pad-x: clamp(24px, 6vw, 96px);
+      --pad-y: clamp(80px, 10vw, 160px);
     }
 
     html { scroll-behavior: smooth; }
@@ -66,193 +64,476 @@
       color: var(--white);
       font-family: var(--font);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ── HEADER ── */
+    /* ─────────────────────────────────────
+       HEADER
+    ───────────────────────────────────── */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 24px 48px;
+      padding: 28px var(--pad-x);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+      transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
     }
 
-    header img {
-      height: 44px;
-      width: auto;
+    header.scrolled {
+      background: rgba(10, 10, 10, 0.96);
+      padding: 18px var(--pad-x);
+      border-bottom-color: var(--mid-gray);
+      backdrop-filter: blur(12px);
     }
+
+    header img { height: 40px; width: auto; }
+
+    nav { display: flex; align-items: center; gap: 40px; }
 
     nav a {
-      color: var(--gray);
+      color: rgba(249,249,249,0.5);
       text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-left: 36px;
       transition: color 0.2s;
     }
-
     nav a:hover { color: var(--white); }
 
-    /* ── HERO ── */
+    nav .nav-cta {
+      color: var(--white);
+      background: var(--orange);
+      padding: 10px 22px;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      font-family: var(--font);
+      font-weight: 900;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    nav .nav-cta:hover { background: var(--orange-d); }
+
+    /* ─────────────────────────────────────
+       HERO
+    ───────────────────────────────────── */
     .hero {
-      min-height: 100vh;
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 0 48px 96px;
-      position: relative;
+      padding: 0 var(--pad-x) clamp(60px, 8vh, 120px);
       overflow: hidden;
     }
 
-    .hero::before {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('assets/09-Billboards-HOP-Final/Hop-Galpão-Final.jpg')
+        center 35% / cover no-repeat;
+      transform: scale(1.03);
+      transition: transform 8s ease-out;
+    }
+
+    .hero-bg.loaded { transform: scale(1); }
+
+    .hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 80% 40%, rgba(200,16,0,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(232,80,2,0.08) 0%, transparent 60%);
-      pointer-events: none;
+        linear-gradient(to top,
+          rgba(10,10,10,1) 0%,
+          rgba(10,10,10,0.6) 45%,
+          rgba(10,10,10,0.15) 100%);
     }
 
-    .hero-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--orange-ii);
-      margin-bottom: 24px;
+      color: var(--orange);
+      margin-bottom: 20px;
+      font-family: Arial, sans-serif;
+      font-weight: 400;
     }
 
     .hero h1 {
-      font-size: clamp(4rem, 13vw, 11rem);
+      font-size: clamp(4.5rem, 14vw, 13rem);
       font-weight: 900;
-      line-height: 0.9;
+      line-height: 0.88;
       letter-spacing: -0.03em;
       text-transform: uppercase;
       color: var(--white);
-      max-width: 900px;
     }
 
-    .hero h1 span {
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
       display: block;
-      color: var(--orange-ii);
+    }
+
+    .hero-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--orange);
+      margin: clamp(28px, 4vh, 48px) 0;
     }
 
     .hero-sub {
-      margin-top: 32px;
-      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
       font-weight: 400;
-      color: var(--gray);
-      letter-spacing: 0.02em;
-      max-width: 520px;
-      line-height: 1.5;
+      color: rgba(240,238,234,0.7);
+      line-height: 1.6;
+      max-width: 440px;
       font-family: Arial, sans-serif;
     }
 
-    .hero-divider {
-      width: 48px;
-      height: 3px;
-      background: var(--orange-ii);
-      margin: 40px 0;
-    }
-
-    /* ── PILLARS ── */
-    .pillars {
-      padding: 120px 48px;
-      border-top: 1px solid var(--dark-gray);
-    }
-
-    .pillars-header {
-      display: flex;
-      align-items: baseline;
-      gap: 24px;
-      margin-bottom: 80px;
-    }
-
-    .pillars-header span {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--orange-ii);
-    }
-
-    .pillars-header h2 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-    }
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .pillar {
-      padding: 56px 48px;
-      background: var(--dark-gray);
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-
-    .pillar:hover { background: #3d3d3d; }
-
-    .pillar::before {
-      content: '';
+    .hero-scroll {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--orange-ii);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .pillar:hover::before { transform: scaleX(1); }
-
-    .pillar-num {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--orange-ii);
-      margin-bottom: 32px;
-      display: block;
-    }
-
-    .pillar h3 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-      line-height: 1;
-    }
-
-    .pillar p {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--gray);
-      font-family: Arial, sans-serif;
-      font-weight: 400;
-      max-width: 280px;
-    }
-
-    /* ── CTA ── */
-    .cta-section {
-      padding: 140px 48px;
+      bottom: clamp(32px, 5vh, 56px);
+      right: var(--pad-x);
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      border-top: 1px solid var(--dark-gray);
+      gap: 10px;
+      color: rgba(249,249,249,0.3);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(249,249,249,0.3), transparent);
+      animation: scrollline 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollline {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 0.8; transform: scaleY(0.6); }
+    }
+
+    /* ─────────────────────────────────────
+       MANIFESTO (split: texto | imagem)
+    ───────────────────────────────────── */
+    .manifesto {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .manifesto-text {
+      background: var(--black);
+      padding: var(--pad-y) var(--pad-x);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .manifesto-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 40px;
+      font-family: Arial, sans-serif;
+    }
+
+    .manifesto-text h2 {
+      font-size: clamp(3rem, 6vw, 7.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+      color: var(--white);
+    }
+
+    .manifesto-text h2 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .manifesto-text p {
+      margin-top: 40px;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--gray);
+      font-family: Arial, sans-serif;
+      max-width: 380px;
+    }
+
+    .manifesto-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifesto-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* ─────────────────────────────────────
+       PILARES
+    ───────────────────────────────────── */
+    .pillars {
+      padding: var(--pad-y) var(--pad-x);
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 64px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--orange);
+      display: inline-block;
+    }
+
+    .pillars-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pillar-item {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      align-items: start;
+      padding: 48px 0;
+      border-top: 1px solid var(--mid-gray);
+      gap: 40px;
+      transition: background 0.3s;
+    }
+
+    .pillar-item:last-child { border-bottom: 1px solid var(--mid-gray); }
+
+    .pillar-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gray);
+      font-family: Arial, sans-serif;
+      padding-top: 8px;
+    }
+
+    .pillar-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .pillar-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--gray);
+      font-family: Arial, sans-serif;
+      max-width: 420px;
+      padding-top: 8px;
+    }
+
+    /* ─────────────────────────────────────
+       EDITORIAL BREAK (foto atletas B&W)
+    ───────────────────────────────────── */
+    .editorial {
+      height: 85vh;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .editorial img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      filter: grayscale(20%) contrast(1.1);
+    }
+
+    .editorial::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,10,10,0.5) 0%, transparent 50%),
+        linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
+    }
+
+    .editorial-caption {
+      position: absolute;
+      bottom: clamp(32px, 6vh, 64px);
+      left: var(--pad-x);
+      z-index: 1;
+    }
+
+    .editorial-caption p {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(249,249,249,0.5);
+      font-family: Arial, sans-serif;
+    }
+
+    /* ─────────────────────────────────────
+       DEPOIMENTOS
+    ───────────────────────────────────── */
+    .testimonials {
+      padding: var(--pad-y) var(--pad-x);
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .testimonial-card {
+      padding: 56px 48px;
+      background: var(--dark-gray);
+      border-top: 2px solid var(--orange);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+
+    .testimonial-quote {
+      font-size: 3.5rem;
+      line-height: 0.8;
+      color: var(--orange);
+      font-family: Georgia, serif;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .testimonial-card p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--cloud);
+      font-family: Arial, sans-serif;
+      font-weight: 400;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-family: var(--font);
+      font-weight: 900;
+    }
+
+    .testimonial-author span {
+      font-size: 0.7rem;
+      color: var(--gray);
+      font-family: Arial, sans-serif;
+    }
+
+    /* ─────────────────────────────────────
+       MERCH (2 itens editoriais)
+    ───────────────────────────────────── */
+    .merch {
+      border-top: 1px solid var(--mid-gray);
+    }
+
+    .merch-header {
+      padding: var(--pad-y) var(--pad-x) 0;
+    }
+
+    .merch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .merch-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-gray);
+    }
+
+    .merch-item img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .merch-item:hover img { transform: scale(1.04); }
+
+    .merch-info {
+      padding: 28px var(--pad-x) 40px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .merch-info strong {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .merch-info span {
+      font-size: 0.7rem;
+      color: var(--gray);
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────
+       CTA (inversão: fundo laranja)
+    ───────────────────────────────────── */
+    .cta-section {
+      background: var(--orange);
+      padding: var(--pad-y) var(--pad-x);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       position: relative;
       overflow: hidden;
     }
@@ -260,336 +541,391 @@
     .cta-section::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232,80,2,0.07) 0%, transparent 70%);
+      top: -40%;
+      right: -10%;
+      width: 60vw;
+      height: 160%;
+      background: rgba(200,16,0,0.25);
+      border-radius: 50%;
       pointer-events: none;
     }
 
-    .cta-section .cta-logo {
-      height: 56px;
-      width: auto;
-      margin-bottom: 64px;
-      opacity: 0.15;
+    .cta-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.5);
+      margin-bottom: 40px;
+      font-family: Arial, sans-serif;
+      position: relative;
+      z-index: 1;
     }
 
     .cta-section h2 {
-      font-size: clamp(2.5rem, 7vw, 6rem);
+      font-size: clamp(3.5rem, 10vw, 10rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: -0.03em;
-      line-height: 0.95;
-      margin-bottom: 24px;
-      max-width: 800px;
+      letter-spacing: -0.04em;
+      line-height: 0.87;
+      color: var(--black);
+      max-width: 900px;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 1;
     }
 
-    .cta-section p {
-      font-size: 1rem;
-      color: var(--gray);
-      margin-bottom: 56px;
-      line-height: 1.6;
-      max-width: 440px;
-      font-family: Arial, sans-serif;
+    .cta-section h2 em {
+      font-style: normal;
+      color: var(--white);
     }
 
     .btn-cta {
-      display: inline-block;
-      background: var(--orange-ii);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--black);
       color: var(--white);
       text-decoration: none;
       font-family: var(--font);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 900;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding: 20px 56px;
-      transition: background 0.2s, transform 0.2s;
+      padding: 22px 56px;
+      position: relative;
+      z-index: 1;
+      transition: background 0.25s, color 0.25s, transform 0.2s;
     }
 
     .btn-cta:hover {
-      background: var(--orange-i);
+      background: var(--white);
+      color: var(--black);
       transform: translateY(-2px);
     }
 
-    /* ── FOOTER ── */
+    .cta-bottom {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(10,10,10,0.15);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-bottom p {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.4);
+      font-family: Arial, sans-serif;
+    }
+
+    .cta-bottom img {
+      height: 28px;
+      width: auto;
+      opacity: 0.2;
+      filter: invert(1);
+    }
+
+    /* ─────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────── */
     footer {
-      padding: 40px 48px;
-      border-top: 1px solid var(--dark-gray);
+      padding: 32px var(--pad-x);
+      border-top: 1px solid var(--mid-gray);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    footer img {
-      height: 28px;
-      width: auto;
-      opacity: 0.5;
-    }
+    footer img { height: 24px; width: auto; opacity: 0.35; }
 
     footer p {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       color: var(--gray);
       text-transform: uppercase;
       font-family: Arial, sans-serif;
     }
 
-    /* ── ANIMAÇÕES DE SCROLL ── */
-    .fade-in {
+    /* ─────────────────────────────────────
+       ANIMAÇÕES DE SCROLL
+    ───────────────────────────────────── */
+    .fade-up {
       opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up[data-delay="1"] { transition-delay: 0.1s; }
+    .fade-up[data-delay="2"] { transition-delay: 0.2s; }
+    .fade-up[data-delay="3"] { transition-delay: 0.3s; }
+
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* ─────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .pillar-item { grid-template-columns: 60px 1fr; }
+      .pillar-desc { display: none; }
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    @media (max-width: 768px) {
+      nav .nav-cta { display: none; }
+      nav a:not(:last-child) { display: none; }
 
-    .fade-in[data-delay="1"] { transition-delay: 0.15s; }
-    .fade-in[data-delay="2"] { transition-delay: 0.30s; }
-    .fade-in[data-delay="3"] { transition-delay: 0.45s; }
+      .manifesto { grid-template-columns: 1fr; min-height: auto; }
+      .manifesto-image { height: 60vw; min-height: 260px; }
 
-    /* ── DEPOIMENTOS ── */
-    .testimonials {
-      padding: 120px 48px;
-      border-top: 1px solid var(--dark-gray);
-    }
+      .pillar-item { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+      .pillar-num { padding-top: 0; }
+      .pillar-desc { display: block; max-width: 100%; }
 
-    .testimonials-header {
-      display: flex;
-      align-items: baseline;
-      gap: 24px;
-      margin-bottom: 80px;
-    }
+      .editorial { height: 60vw; min-height: 320px; }
 
-    .testimonials-header span {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--orange-ii);
-    }
-
-    .testimonials-header h2 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .testimonial-card {
-      background: #1a1a1a;
-      padding: 48px 40px;
-      border-top: 3px solid var(--orange-ii);
-      position: relative;
-    }
-
-    .testimonial-quote {
-      font-size: 4rem;
-      line-height: 1;
-      color: var(--orange-ii);
-      font-family: Georgia, serif;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .testimonial-card p {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--cloud);
-      font-family: Arial, sans-serif;
-      margin-bottom: 32px;
-    }
-
-    .testimonial-author strong {
-      display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--white);
-      font-family: var(--font);
-    }
-
-    .testimonial-author span {
-      font-size: 0.72rem;
-      color: var(--gray);
-      font-family: Arial, sans-serif;
-      letter-spacing: 0.05em;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      header { padding: 20px 24px; }
-      nav { display: none; }
-
-      .hero { padding: 0 24px 72px; }
-
-      .pillars { padding: 80px 24px; }
-      .pillars-grid { grid-template-columns: 1fr; gap: 2px; }
-      .pillar { padding: 40px 28px; }
-
-      .testimonials { padding: 80px 24px; }
       .testimonials-grid { grid-template-columns: 1fr; gap: 2px; }
-      .testimonial-card { padding: 36px 28px; }
+      .testimonial-card { padding: 40px 28px; min-height: auto; }
 
-      .cta-section { padding: 100px 24px; }
+      .merch-grid { grid-template-columns: 1fr; }
+      .merch-item img { aspect-ratio: 3 / 2; }
 
-      footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+      .cta-section h2 { font-size: clamp(3rem, 12vw, 6rem); }
+      .cta-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+
+      footer { flex-direction: column; gap: 16px; text-align: center; }
     }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: clamp(3rem, 16vw, 5rem); }
+      .hero h1 { font-size: clamp(3.5rem, 18vw, 6rem); }
+      .manifesto-text h2 { font-size: clamp(2.5rem, 12vw, 5rem); }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
+  <!-- ── HEADER ── -->
+  <header id="header">
     <img
       src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/02-mainlogo-SloganI-HOP-Negative-FinalHOP.png"
       alt="HOP — Community of Consistency"
     />
     <nav>
       <a href="#pilares">Pilares</a>
-      <a href="#comunidade">Comunidade</a>
-      <a href="#cta">Entrar</a>
+      <a href="#merch">Merch</a>
+      <a
+        href="https://chat.whatsapp.com/FMAkHpviWpR0q7H15PuAhM?mode=gi_t"
+        class="nav-cta"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Entrar na HOP</a>
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- ── HERO ── -->
   <section class="hero">
-    <p class="hero-tag">House of Pace · São Paulo</p>
-    <h1>
-      HOUSE<br/>
-      OF<br/>
-      <span>PACE.</span>
-    </h1>
-    <div class="hero-divider"></div>
-    <p class="hero-sub">
-      Consistência é o que te separa<br/>do próximo nível.
-    </p>
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">House of Pace · São Paulo · 2026</p>
+      <h1>
+        HOUSE<br/>
+        OF<br/>
+        <em>PACE.</em>
+      </h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">
+        Consistência é o que te separa<br/>do próximo nível.
+      </p>
+    </div>
+    <div class="hero-scroll">Scroll</div>
   </section>
 
-  <!-- PILLARS -->
+  <!-- ── MANIFESTO ── -->
+  <section class="manifesto">
+    <div class="manifesto-text">
+      <p class="manifesto-label">Manifesto</p>
+      <h2 class="fade-left">
+        NÃO É<br/>
+        TALENTO.<br/>
+        É <em>CONSISTÊNCIA.</em>
+      </h2>
+      <p class="fade-up" data-delay="1">
+        Qualquer um pode treinar uma semana. Poucos aparecem na semana seguinte.
+        E na outra. E na outra. A HOP existe para esse grupo — o grupo que não
+        para, independente do ritmo, do clima ou do dia.
+      </p>
+    </div>
+    <div class="manifesto-image">
+      <img
+        src="assets/07-Stories-HOP-Final/04-Stories-HOP-Final.png"
+        alt="Running · Trail · Pedal · Swimming"
+      />
+    </div>
+  </section>
+
+  <!-- ── PILARES ── -->
   <section class="pillars" id="pilares">
-    <div class="pillars-header fade-in">
-      <span>01</span>
-      <h2>Os Pilares</h2>
-    </div>
-
-    <div class="pillars-grid">
-
-      <div class="pillar fade-in">
-        <span class="pillar-num">01 / 03</span>
-        <h3>Mindset</h3>
-        <p>
-          A mente é o primeiro músculo a treinar.
-          Aqui desenvolvemos foco, resiliência e a mentalidade de quem não para.
-        </p>
+    <p class="section-label fade-up">Os Pilares</p>
+    <div class="pillars-list">
+      <div class="pillar-item fade-up">
+        <span class="pillar-num">01</span>
+        <h3 class="pillar-title">Mindset</h3>
+        <p class="pillar-desc">A mente é o primeiro músculo a treinar. Aqui desenvolvemos foco, resiliência e a mentalidade de quem não para, independente das circunstâncias.</p>
       </div>
-
-      <div class="pillar fade-in" data-delay="1">
-        <span class="pillar-num">02 / 03</span>
-        <h3>Performance</h3>
-        <p>
-          Treino inteligente, rotina disciplinada e evolução mensurável.
-          Cada passo conta — e cada PR importa.
-        </p>
+      <div class="pillar-item fade-up" data-delay="1">
+        <span class="pillar-num">02</span>
+        <h3 class="pillar-title">Performance</h3>
+        <p class="pillar-desc">Treino inteligente, rotina disciplinada e evolução mensurável. Cada passo conta — e cada PR é o resultado de dias acumulados, não de momentos isolados.</p>
       </div>
-
-      <div class="pillar fade-in" data-delay="2">
-        <span class="pillar-num">03 / 03</span>
-        <h3>Comunidade</h3>
-        <p>
-          Você não precisa fazer isso sozinho.
-          A HOP é o grupo de pessoas que te empurra quando o ritmo cai.
-        </p>
+      <div class="pillar-item fade-up" data-delay="2">
+        <span class="pillar-num">03</span>
+        <h3 class="pillar-title">Comunidade</h3>
+        <p class="pillar-desc">Você não precisa fazer isso sozinho. A HOP é o grupo que te empurra quando o ritmo cai — e que celebra quando você ultrapassa o que achava possível.</p>
       </div>
-
     </div>
   </section>
 
-  <!-- DEPOIMENTOS -->
-  <section class="testimonials">
-    <div class="testimonials-header fade-in">
-      <span>02</span>
-      <h2>O Que Dizem</h2>
+  <!-- ── EDITORIAL BREAK ── -->
+  <section class="editorial">
+    <img
+      src="assets/07-Stories-HOP-Final/05-Stories-HOP-Final.png"
+      alt="HOP Athletes"
+    />
+    <div class="editorial-caption fade-up">
+      <p>Community of Consistency · São Paulo · 2026</p>
     </div>
+  </section>
 
+  <!-- ── DEPOIMENTOS ── -->
+  <section class="testimonials">
+    <p class="section-label fade-up">O que dizem</p>
     <div class="testimonials-grid">
-
-      <div class="testimonial-card fade-in">
-        <span class="testimonial-quote">"</span>
-        <p>A HOP mudou minha relação com consistência. Antes eu começava e parava. Hoje, simplesmente não paro.</p>
+      <div class="testimonial-card fade-up">
+        <div>
+          <span class="testimonial-quote">"</span>
+          <p>A HOP mudou minha relação com consistência. Antes eu começava e parava. Hoje, simplesmente não paro.</p>
+        </div>
         <div class="testimonial-author">
           <strong>Lucas M.</strong>
           <span>Membro desde Jan/2024</span>
         </div>
       </div>
-
-      <div class="testimonial-card fade-in" data-delay="1">
-        <span class="testimonial-quote">"</span>
-        <p>Não é só treino. É uma mentalidade. A comunidade te puxa pra cima mesmo nos dias ruins.</p>
+      <div class="testimonial-card fade-up" data-delay="1">
+        <div>
+          <span class="testimonial-quote">"</span>
+          <p>Não é só treino. É uma mentalidade. A comunidade te puxa pra cima mesmo nos dias em que você não quer sair da cama.</p>
+        </div>
         <div class="testimonial-author">
           <strong>Fernanda R.</strong>
           <span>Membro desde Mar/2024</span>
         </div>
       </div>
-
-      <div class="testimonial-card fade-in" data-delay="2">
-        <span class="testimonial-quote">"</span>
-        <p>Entrei achando que era mais um grupo. Saí percebendo que era o que faltava na minha rotina.</p>
+      <div class="testimonial-card fade-up" data-delay="2">
+        <div>
+          <span class="testimonial-quote">"</span>
+          <p>Entrei achando que era mais um grupo. Saí percebendo que era exatamente o que faltava na minha rotina.</p>
+        </div>
         <div class="testimonial-author">
           <strong>Rafael T.</strong>
           <span>Membro desde Jun/2024</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ── MERCH ── -->
+  <section class="merch" id="merch">
+    <div class="merch-header">
+      <p class="section-label fade-up">Nosso Merch</p>
+    </div>
+    <div class="merch-grid">
+      <div class="merch-item fade-up">
+        <img
+          src="assets/08-Merch-HOP-Final/01-Tshirt-HOP-Final/01-Tshirt-HOP-Final.jpg"
+          alt="HOP T-Shirt"
+        />
+        <div class="merch-info">
+          <strong>T-Shirt</strong>
+          <span>House of Pace</span>
+        </div>
+      </div>
+      <div class="merch-item fade-up" data-delay="1">
+        <img
+          src="assets/08-Merch-HOP-Final/03-Jersey-HOP-Final/Hop-Jersey-Final.png"
+          alt="HOP Jersey"
+          style="background: #111;"
+        />
+        <div class="merch-info">
+          <strong>Jersey</strong>
+          <span>House of Pace</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
   <section class="cta-section" id="cta">
-    <img
-      class="cta-logo fade-in"
-      src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/01-mainlogo-HOP-Negative-FinalHOP.png"
-      alt="HOP"
-    />
-    <h2 class="fade-in">Pronto para<br/>dar o próximo<br/>passo?</h2>
-    <p class="fade-in" data-delay="1">
-      Faça parte de uma comunidade que transforma consistência em resultado.
-      A HOP espera por você.
-    </p>
+    <p class="cta-label">Faça parte</p>
+    <h2 class="fade-up">
+      PRONTO<br/>
+      PARA O<br/>
+      PRÓXIMO<br/>
+      <em>NÍVEL?</em>
+    </h2>
     <a
       href="https://chat.whatsapp.com/FMAkHpviWpR0q7H15PuAhM?mode=gi_t"
-      class="btn-cta fade-in"
-      data-delay="2"
+      class="btn-cta fade-up"
+      data-delay="1"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
       Quero Fazer Parte
     </a>
+    <div class="cta-bottom fade-up" data-delay="2">
+      <p>®2026 House of Pace · São Paulo / SP</p>
+      <img
+        src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/01-mainlogo-HOP-Negative-FinalHOP.png"
+        alt="HOP"
+      />
+    </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="comunidade">
+  <!-- ── FOOTER ── -->
+  <footer>
     <img
-      src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/01-mainlogo-HOP-Negative-FinalHOP.png"
+      src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/02-mainlogo-SloganI-HOP-Negative-FinalHOP.png"
       alt="HOP"
     />
-    <p>®2026 House of Pace · São Paulo / SP</p>
+    <p>®2026 Making Health Cool</p>
   </footer>
 
   <script>
+    // Navbar scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Hero bg ken burns
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('load', () => {
+      setTimeout(() => heroBg.classList.add('loaded'), 100);
+    });
+
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -597,9 +933,9 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-up, .fade-left').forEach(el => observer.observe(el));
   </script>
 
 </body>

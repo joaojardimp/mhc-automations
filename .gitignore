@@ -1,0 +1,8 @@
+# Arquivos grandes (acima do limite do GitHub de 100MB)
+assets/01-ID-HOP-Final/ID-HOP-Final.ai
+assets/01-ID-HOP-Final/ID-HOP-Final.pdf
+assets/05-BG-HOP-Final/01-BG-HOP-Final.pdf
+
+# Sistema
+.DS_Store
+**/.DS_Store
