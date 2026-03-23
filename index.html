@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOP — House of Pace</title>
+  <style>
+    @font-face {
+      font-family: 'Blauer Nue';
+      src: local('Blauer Nue');
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --orange-i:   #C81000;
+      --orange-ii:  #E85002;
+      --black:      #0A0A0A;
+      --cloud:      #F0EEEA;
+      --red:        #7F1E0E;
+      --white:      #F9F9F9;
+      --gray:       #646464;
+      --dark-gray:  #333333;
+      --font: 'Blauer Nue', 'Arial Black', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+    }
+
+    header img {
+      height: 44px;
+      width: auto;
+    }
+
+    nav a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-left: 36px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 96px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 40%, rgba(200,16,0,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(232,80,2,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange-ii);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 13vw, 11rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+      max-width: 900px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--orange-ii);
+    }
+
+    .hero-sub {
+      margin-top: 32px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 400;
+      color: var(--gray);
+      letter-spacing: 0.02em;
+      max-width: 520px;
+      line-height: 1.5;
+      font-family: Arial, sans-serif;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--orange-ii);
+      margin: 40px 0;
+    }
+
+    /* ── PILLARS ── */
+    .pillars {
+      padding: 120px 48px;
+      border-top: 1px solid var(--dark-gray);
+    }
+
+    .pillars-header {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .pillars-header span {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange-ii);
+    }
+
+    .pillars-header h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .pillar {
+      padding: 56px 48px;
+      background: var(--dark-gray);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .pillar:hover { background: #3d3d3d; }
+
+    .pillar::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--orange-ii);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .pillar:hover::before { transform: scaleX(1); }
+
+    .pillar-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--orange-ii);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .pillar h3 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .pillar p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--gray);
+      font-family: Arial, sans-serif;
+      font-weight: 400;
+      max-width: 280px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 140px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-top: 1px solid var(--dark-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232,80,2,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section .cta-logo {
+      height: 56px;
+      width: auto;
+      margin-bottom: 64px;
+      opacity: 0.15;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(2.5rem, 7vw, 6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .cta-section p {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 56px;
+      line-height: 1.6;
+      max-width: 440px;
+      font-family: Arial, sans-serif;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: var(--orange-ii);
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 20px 56px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-cta:hover {
+      background: var(--orange-i);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid var(--dark-gray);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer img {
+      height: 28px;
+      width: auto;
+      opacity: 0.5;
+    }
+
+    footer p {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { padding: 20px 24px; }
+      nav { display: none; }
+
+      .hero { padding: 0 24px 72px; }
+
+      .pillars { padding: 80px 24px; }
+      .pillars-grid { grid-template-columns: 1fr; gap: 2px; }
+      .pillar { padding: 40px 28px; }
+
+      .cta-section { padding: 100px 24px; }
+
+      footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: clamp(3rem, 16vw, 5rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img
+      src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/02-mainlogo-SloganI-HOP-Negative-FinalHOP.png"
+      alt="HOP — Community of Consistency"
+    />
+    <nav>
+      <a href="#pilares">Pilares</a>
+      <a href="#comunidade">Comunidade</a>
+      <a href="#cta">Entrar</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-tag">House of Pace · São Paulo</p>
+    <h1>
+      HOUSE<br/>
+      OF<br/>
+      <span>PACE.</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      Consistência é o que te separa<br/>do próximo nível.
+    </p>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars" id="pilares">
+    <div class="pillars-header">
+      <span>01</span>
+      <h2>Os Pilares</h2>
+    </div>
+
+    <div class="pillars-grid">
+
+      <div class="pillar">
+        <span class="pillar-num">01 / 03</span>
+        <h3>Mindset</h3>
+        <p>
+          A mente é o primeiro músculo a treinar.
+          Aqui desenvolvemos foco, resiliência e a mentalidade de quem não para.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar-num">02 / 03</span>
+        <h3>Performance</h3>
+        <p>
+          Treino inteligente, rotina disciplinada e evolução mensurável.
+          Cada passo conta — e cada PR importa.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar-num">03 / 03</span>
+        <h3>Comunidade</h3>
+        <p>
+          Você não precisa fazer isso sozinho.
+          A HOP é o grupo de pessoas que te empurra quando o ritmo cai.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <img
+      class="cta-logo"
+      src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/01-mainlogo-HOP-Negative-FinalHOP.png"
+      alt="HOP"
+    />
+    <h2>Pronto para<br/>dar o próximo<br/>passo?</h2>
+    <p>
+      Faça parte de uma comunidade que transforma consistência em resultado.
+      A HOP espera por você.
+    </p>
+    <a href="#" class="btn-cta">Quero Fazer Parte</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="comunidade">
+    <img
+      src="assets/02-Logo-HOP-Final/01-Logo-HOP-PNG/01-mainlogo-HOP-Negative-FinalHOP.png"
+      alt="HOP"
+    />
+    <p>®2026 House of Pace · São Paulo / SP</p>
+  </footer>
+
+</body>
+</html>
